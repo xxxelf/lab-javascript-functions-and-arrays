@@ -82,7 +82,18 @@ var average = result / array.length;
 console.log(average);
 
 // Unique Arrays
-function uniquifyArray(array) {}
+function uniquifyArray(array) {
+  var uniqueArray = [];
+  array = array.sort();
+  array.forEach(function(word, i) {
+    var lastOfUniqueArray = uniqueArray.length - 1;
+    if (word !== uniqueArray[lastOfUniqueArray]) {
+      uniqueArray.push(word);
+    }
+  });
+
+  return uniqueArray;
+}
 
 var words = [
   "crab",
@@ -99,9 +110,16 @@ var words = [
 ];
 var uniqued = uniquifyArray(words);
 console.log(uniqued);
-
 // Finding Elements
-function doesWordExist(wordsArray, word) {}
+function doesWordExist(wordsArray, word) {
+  var doesExist = "No it does not exist.";
+  wordsArray.forEach(function(someWord) {
+    if (someWord === word) {
+      doesExist = "The word '" + word + "' is in the array.";
+    }
+  });
+  return doesExist;
+}
 
 var words = [
   "machine",
@@ -121,7 +139,15 @@ var hasDog = doesWordExist(words, "dog");
 console.log(hasDog);
 
 // Counting Repetion
-function howManyTimes(words, word) {}
+var counter = 0;
+function howManyTimes(wordsArray, word) {
+  wordsArray.forEach(function(someWord) {
+    if (someWord === word) {
+      counter++;
+    }
+  });
+  return counter;
+}
 
 var words = [
   "machine",
@@ -139,6 +165,8 @@ var words = [
 
 var howManyMatter = howManyTimes(words, "matter");
 console.log(howManyMatter);
+
+counter = 0;
 
 var howManyDog = howManyTimes(words, "dog");
 console.log(howManyDog);
